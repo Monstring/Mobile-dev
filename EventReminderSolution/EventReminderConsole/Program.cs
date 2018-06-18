@@ -8,7 +8,6 @@ namespace EventReminderConsole
         static void Main(string[] args)
         {
             List<Event> eventList = new List<Event>();
-
             while (true)
             {
                 Console.Write("\n>");
@@ -21,9 +20,7 @@ namespace EventReminderConsole
                 {
                     Console.WriteLine($"you've added {tokens[1]} on {tokens[2]}");
 
-                    Event newEvent = new Event();
-                    newEvent.Name = tokens[1];
-                    newEvent.Date = tokens[2];
+                    Event newEvent = new Event(tokens[1],tokens[2]);
                         
                     eventList.Add(newEvent);
                 }
@@ -55,6 +52,12 @@ namespace EventReminderConsole
     {
         public string Name;
         public string Date;
+
+        public Event(string name , string date)
+        {
+            this.Name = name;
+            this.Date = date;
+        }
 
         public override string ToString()
         {
