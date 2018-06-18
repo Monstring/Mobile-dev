@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EventReminderConsole
 {
@@ -6,7 +7,43 @@ namespace EventReminderConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //kld code
+
+            //make a list of strings 
+            //List<string> list = new List<string>();
+
+            //list.Add("apple");
+            //list.Add("orange");
+
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    Console.WriteLine(list[i]);
+            //}
+            //kld code end 
+
+            List<string> list = new List<string>();
+
+            
+
+            Console.WriteLine("Enter a command");
+            string input = Console.ReadLine();
+            Console.WriteLine("You've selected "+ input);
+
+            string token = input.ToLower();
+            if (token == "add")
+            {
+                Console.WriteLine("Adding a " + token);
+            }
+            else if (token == "list")
+            {
+                Console.WriteLine("Bringing up the list");
+            }
+            else
+            {
+                Console.WriteLine("learn to type");
+            }
+
+            Console.ReadLine();
         }
     }
 }
