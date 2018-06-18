@@ -20,7 +20,7 @@ namespace EventReminderConsole
                 {
                     Console.WriteLine($"you've added {tokens[1]} on {tokens[2]}");
 
-                    Event newEvent = new Event(tokens[1],tokens[2]);
+                    Event newEvent = new Event(tokens[1], tokens[2]);
                         
                     eventList.Add(newEvent);
                 }
@@ -51,9 +51,15 @@ namespace EventReminderConsole
     public class Event
     {
         public string Name;
-        public string Date;
+        public DateTime Date;
 
         public Event(string name , string date)
+        {
+            this.Name = name;
+            this.Date = DateTime.Parse(date);
+        }
+
+        public Event(string name, DateTime date)
         {
             this.Name = name;
             this.Date = date;
@@ -61,7 +67,7 @@ namespace EventReminderConsole
 
         public override string ToString()
         {
-            return Name + " " + Date; 
+            return Name + " " + Date.ToShortDateString(); 
         }
     }
 
