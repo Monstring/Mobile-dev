@@ -31,16 +31,18 @@ namespace EventReminderConsole
                 string input = Console.ReadLine();
                 Console.WriteLine("You've selected "+ input);
 
-                string token = input.ToLower();
-                if (token == "add")
+                string[] tokens = input.Split(' ');
+
+                string command = tokens[0].ToLower();
+                if (command.StartsWith("add"))
                 {
-                    Console.WriteLine("Adding a " + token);
+                    Console.WriteLine($"you've added {tokens[1]} on {tokens[2]}");                    
                 }
-                else if (token == "list")
+                else if (command == "list")
                 {
                     Console.WriteLine("Bringing up the list");
                 }
-                else if (token == "exit")
+                else if (command == "exit")
                 {
                     break;
                 }
