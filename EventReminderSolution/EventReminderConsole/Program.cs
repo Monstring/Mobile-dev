@@ -7,26 +7,10 @@ namespace EventReminderConsole
     {
         static void Main(string[] args)
         {
-            //kld code
-
-            //make a list of strings 
-            //List<string> list = new List<string>();
-
-            //list.Add("apple");
-            //list.Add("orange");
-
-            //for (int i = 0; i < list.Count; i++)
-            //{
-            //    Console.WriteLine(list[i]);
-            //}
-            //kld code end 
-
-            List<string> eventList = new List<string>();
-
+            List<Event> eventList = new List<Event>();
 
             while (true)
             {
-
                 Console.Write("\n>");
                 string input = Console.ReadLine();
 
@@ -36,13 +20,20 @@ namespace EventReminderConsole
                 if (command.StartsWith("add"))
                 {
                     Console.WriteLine($"you've added {tokens[1]} on {tokens[2]}");
-                    eventList.Add(string.Format("{0} {1}", tokens[1], tokens[2]));
+
+                    Event newEvent = new Event();
+                    newEvent.Name = tokens[1];
+                    newEvent.Date = tokens[2];
+                        
+                    eventList.Add(newEvent);
                 }
                 else if (command == "list")
                 {
                     for (int i = 0; i < eventList.Count; i++)
                     {
-                        Console.WriteLine((i+1)+"-"+eventList[i]);
+                        Event e = eventList[i];
+                       
+                        Console.WriteLine((i+1) + "-" + e.ToString());
 
                     }
                 }
@@ -59,4 +50,17 @@ namespace EventReminderConsole
             Console.ReadLine();
         }
     }
+
+    public class Event
+    {
+        public string Name;
+        public string Date;
+
+        public override string ToString()
+        {
+            return Name + " " + Date; 
+        }
+    }
+
+
 }
