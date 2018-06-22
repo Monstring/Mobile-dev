@@ -4,26 +4,34 @@ using System.Collections.Generic;
 namespace EventReminderConsole
 {
     public class ReminderManager {
-        private List<Reminder> EventList;
+        private List<Reminder> Reminders;
         public ReminderManager()
         {
-            EventList = new List<Reminder>();
+            Reminders = new List<Reminder>();
         }
         public void AddReminder(string name, string date)
         {
+            name = name.Trim();
+            for (int i = 0; i < Reminders.Count; i++)
+            {
+                Reminder r = Reminders[i];
+                if (Reminders[i].Name.ToLower() == name.ToLower()) {
+                    Console.WriteLine("You can't add duplicate names");
+                    return;
+                }
+            }
             Reminder newEvent = new Reminder(name, date);
-            EventList.Add(newEvent);
+            Reminders.Add(newEvent);
             Console.WriteLine($"you've added {name} on {date}");
         }
 
         public void ListReminders()
         {
-            for (int i = 0; i < EventList.Count; i++)
+            for (int i = 0; i < Reminders.Count; i++)
             {
-                Reminder e = EventList[i];
+                Reminder e = Reminders[i];
                 Console.WriteLine((i + 1) + "-" + e.ToString());
             }
         }
     }
-
 }
