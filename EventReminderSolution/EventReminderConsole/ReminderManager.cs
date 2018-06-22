@@ -20,9 +20,15 @@ namespace EventReminderConsole
                     return;
                 }
             }
-            Reminder newEvent = new Reminder(name, date);
-            Reminders.Add(newEvent);
-            Console.WriteLine($"you've added {name} on {date}");
+            try
+            {
+                Reminder newEvent = new Reminder(name, date);
+                Reminders.Add(newEvent);
+                Console.WriteLine($"you've added {name} on {date}");
+            }catch(ArgumentException e)
+            {
+                Console.WriteLine("Error! " + e.Message);
+            }
         }
 
         public void ListReminders()
