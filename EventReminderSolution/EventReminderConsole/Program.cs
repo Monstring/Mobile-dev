@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace EventReminderConsole
 {
@@ -7,6 +6,7 @@ namespace EventReminderConsole
     {
         static void Main(string[] args)
         {
+            ReminderManager reminderManager = new ReminderManager();
             while (true)
             {
                 Console.Write("\n>");
@@ -16,12 +16,11 @@ namespace EventReminderConsole
 
                 if (command.StartsWith("add"))
                 {
-                    Console.WriteLine($"you've added {tokens[1]} on {tokens[2]}");
-                    AddReminder(tokens[1], tokens[2]);
+                    reminderManager.AddReminder(tokens[1], tokens[2]);
                 }
                 else if (command == "list")
                 {
-                    ListReminders();
+                    reminderManager.ListReminders();
                 }
                 else if (command == "exit")
                 {
@@ -35,20 +34,6 @@ namespace EventReminderConsole
             Console.WriteLine("Closing program");
             Console.ReadLine();
         }
-        static List<Reminder> eventList = new List<Reminder>();
-        private static void AddReminder(string name, string date) {
-            Reminder newEvent = new Reminder(name, date);
-            eventList.Add(newEvent);
-        }
-
-        private static void ListReminders() {
-            for (int i = 0; i < eventList.Count; i++)
-            {
-                Reminder e = eventList[i];
-                Console.WriteLine((i + 1) + "-" + e.ToString());
-            }
-        }
     }
-
 
 }
