@@ -7,7 +7,7 @@ namespace EventReminderConsole
     {
         static void Main(string[] args)
         {
-            List<Event> eventList = new List<Event>();
+            List<Reminder> eventList = new List<Reminder>();
             while (true)
             {
                 Console.Write("\n>");
@@ -20,7 +20,7 @@ namespace EventReminderConsole
                 {
                     Console.WriteLine($"you've added {tokens[1]} on {tokens[2]}");
 
-                    Event newEvent = new Event(tokens[1], tokens[2]);
+                    Reminder newEvent = new Reminder(tokens[1], tokens[2]);
                         
                     eventList.Add(newEvent);
                 }
@@ -28,7 +28,7 @@ namespace EventReminderConsole
                 {
                     for (int i = 0; i < eventList.Count; i++)
                     {
-                        Event e = eventList[i];
+                        Reminder e = eventList[i];
                        
                         Console.WriteLine((i+1) + "-" + e.ToString());
 
@@ -45,29 +45,6 @@ namespace EventReminderConsole
             }
             Console.WriteLine("Closing program");
             Console.ReadLine();
-        }
-    }
-
-    public class Event
-    {
-        public string Name;
-        public DateTime Date;
-
-        public Event(string name , string date)
-        {
-            this.Name = name;
-            this.Date = DateTime.Parse(date);
-        }
-
-        public Event(string name, DateTime date)
-        {
-            this.Name = name;
-            this.Date = date;
-        }
-
-        public override string ToString()
-        {
-            return Name + " " + Date.ToShortDateString(); 
         }
     }
 
